@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'thisissecret'
-app.config['SQLALCHEMY_DATABASE_UNI'] = 'sqlite:////mnt/C:/Users/Eirik/Documents/MyProjects/pythonapi/todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/Eirik/Documents/MyProjects/pythonapi/todo.db'
 
 db = SQLAlchemy(app)
 
@@ -20,6 +20,8 @@ class Todo(db.Model):
     text = db.Column(db.String(50))
     complete = db.Column(db.Boolean)
     user_id = db.Column(db.Integer)
+
+db.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True)
