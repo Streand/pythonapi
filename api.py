@@ -25,6 +25,14 @@ class Todo(db.Model):
 
 @app.route('/user', methods=['GET'])
 def get_all_users():
+
+    users = User.query.all()
+
+    output = []
+
+    for user in users:
+        user_data = {}
+        user_data['']
     return ''
 
 @app.route('/user/<user_id>', methods=['GET'])
@@ -46,9 +54,9 @@ def create_user():
 def promote_user():
     return ''
 
-# @app.route('/user/<user_id>', methods=['DELETE'])
-# def promote_user():
-#     return ''
+@app.route('/user/<user_id>', methods=['DELETE'])
+def delete_user():
+    return ''
 
 if __name__ == '__main__':
     app.run(debug=True)
