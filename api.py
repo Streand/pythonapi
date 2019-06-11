@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'thisissecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/Eirik/Documents/MyProjects/pythonapi/todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/Eirik/Desktop/api/pythonapi/todo.db'
 
 db = SQLAlchemy(app)
 
@@ -32,11 +32,16 @@ def get_all_users():
 
     for user in users:
         user_data = {}
-        user_data['']
-    return ''
+        user_data['public_id'] = user.public_id
+        user_data['name'] = user.name
+        user_data['password'] = user.password
+        user_data['admin'] = user.admin
+        output.append(user_data)
+
+    return jsonify({'users' : output})
 
 @app.route('/user/<user_id>', methods=['GET'])
-def get_one_user():
+def get_one_user(user_id):
     return ''
 
 @app.route('/user', methods=['POST'])
